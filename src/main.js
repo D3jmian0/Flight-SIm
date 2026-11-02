@@ -72,7 +72,7 @@ const fuselageMat=mat(0xf0eee1), accentMat=mat(0xd28e67), glassMat=new THREE.Mes
 function mesh(geo,material,pos=[0,0,0],rot=[0,0,0],parent=plane){
  const m=new THREE.Mesh(geo,material);m.position.set(...pos);m.rotation.set(...rot);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;
 }
-mesh(new THREE.CapsuleGeometry(1.05,8,6,12),fuselageMat,[0,0,0],[0,0,0],[Math.PI/2,0,0]);
+mesh(new THREE.CapsuleGeometry(1.05,8,6,12),fuselageMat,[0,0,0],[Math.PI/2,0,0]);
 // nose and tail
 mesh(new THREE.ConeGeometry(1.05,3.2,12),accentMat,[0,0,-6.2],[Math.PI/2,0,0]);
 mesh(new THREE.BoxGeometry(8,.22,2.1),fuselageMat,[0,0,4.2]);

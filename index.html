@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#dce9e3" />
+  <title>Cozy Flight</title>
+  <link rel="stylesheet" href="./src/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="game"></div>
+  <div class="topbar">
+    <div class="brand"><span class="brand-icon">✈</span><div><b>COZY FLIGHT</b><small>slow down, look around</small></div></div>
+    <div class="status"><span class="dot"></span> FREE FLIGHT <span id="fps">3D</span></div>
+  </div>
+
+  <section class="flight-hud">
+    <div class="hud-item"><small>PRĘDKOŚĆ</small><strong><span id="speed">0</span><em> km/h</em></strong></div>
+    <div class="hud-item"><small>WYSOKOŚĆ</small><strong><span id="altitude">0</span><em> m</em></strong></div>
+    <div class="hud-item"><small>PUŁAP / KIERUNEK</small><strong><span id="heading">000</span><em>°</em></strong></div>
+  </section>
+
+  <button id="panel-toggle" class="panel-toggle">⚙ USTAWIENIA LOTU</button>
+  <aside id="panel" class="panel">
+    <div class="panel-head"><div><small>COZY FLIGHT</small><h2>Ustawienia lotu</h2></div><button id="close-panel" aria-label="Zamknij">×</button></div>
+    <div class="section">
+      <div class="section-title">WARUNKI ATMOSFERYCZNE</div>
+      <label>Siła wiatru <output id="wind-value">12 km/h</output></label>
+      <input id="wind" type="range" min="0" max="60" value="12" />
+      <label>Kierunek wiatru <output id="wind-dir-value">270°</output></label>
+      <input id="wind-dir" type="range" min="0" max="359" value="270" />
+      <label>Porywy <output id="gust-value">Lekkie</output></label>
+      <input id="gust" type="range" min="0" max="2" value="1" step="1" />
+    </div>
+    <div class="section">
+      <div class="section-title">SAMOLOT</div>
+      <label>Ładowność <output id="payload-value">50 kg</output></label>
+      <input id="payload" type="range" min="0" max="250" value="50" step="5" />
+      <label>Paliwo <output id="fuel-value">80%</output></label>
+      <input id="fuel" type="range" min="0" max="100" value="80" />
+    </div>
+    <div class="section">
+      <div class="section-title">ŚWIATŁO I POGODA</div>
+      <label>Godzina <output id="time-value">17:30</output></label>
+      <input id="time" type="range" min="0" max="23.9" value="17.5" step="0.1" />
+      <label>Zachmurzenie <output id="cloud-value">25%</output></label>
+      <input id="clouds" type="range" min="0" max="100" value="25" />
+      <label>Nasłonecznienie <output id="sun-value">75%</output></label>
+      <input id="sun" type="range" min="0" max="100" value="75" />
+    </div>
+    <div class="section controls-note">
+      <div class="section-title">STEROWANIE</div>
+      <p><kbd>W</kbd><kbd>S</kbd> pochylenie &nbsp; <kbd>A</kbd><kbd>D</kbd> przechylenie</p>
+      <p><kbd>SHIFT</kbd> gaz &nbsp; <kbd>CTRL</kbd> zmniejsz gaz</p>
+      <p><kbd>Q</kbd><kbd>E</kbd> ster kierunku &nbsp; <kbd>SPACE</kbd> hamulec</p>
+      <p>Mysz: obracanie kamery · <kbd>R</kbd> powrót na pas</p>
+    </div>
+    <div class="panel-actions"><button id="music" class="secondary">♫ Włącz lo-fi</button><button id="reset" class="primary">↻ Powrót na lotnisko</button></div>
+    <p class="tiny">Prototyp 0.1 · Muzyka uruchamia się po kliknięciu.</p>
+  </aside>
+
+  <div class="bottom-hint"><span>WASD</span> sterowanie <i>·</i> <span>SHIFT / CTRL</span> przepustnica <i>·</i> <span>R</span> reset</div>
+  <div id="toast" class="toast">Miłego lotu ☁</div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
